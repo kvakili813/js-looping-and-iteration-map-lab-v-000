@@ -1,40 +1,17 @@
-const knownDecepticons = ['Megatron', 'Skywarp', 'Laserbeak', 'Barricade'];
+function lowerCaseDrivers (drivers) {
+  return drivers.map(function (driver)
+   { return driver.toLowerCase()});
+}
 
-const robots = [
-  { name: 'Bumblebee', alliance: null },
-  { name: 'Laserbeak', alliance: null },
-  { name: 'Barricade', alliance: null },
-  { name: 'Optimus Prime', alliance: null },
-  { name: 'Skywarp', alliance: null },
-  { name: 'Megatron', alliance: null },
-  { name: 'Ironhide', alliance: null },
-  { name: 'Ratchet', alliance: null }
-];
-
-const zebraStripes = [
-  { width: 9.12, color: null },
-  { width: 5.71, color: null },
-  { width: 6.01, color: null },
-  { width: 1.54, color: null },
-  { width: 8.34, color: null },
-  { width: 7.77, color: null },
-  { width: 0.59, color: null },
-  { width: 7.31, color: null }
-];
-
-
-const sortedRobots = robots.map(function(robot) {
-  const isDeception = knownDecepticons.includes(robot.name);
-  return Object.assign({}, robot, {
-    name: robots.name,
-    alliance: isDeception ? 'decepticon' : 'autobot'
+function nameToAttributes(drivers) {
+  return drivers.map(function(driver) {
+    names = driver.split(" ");
+    return { firstName: names[0], lastName: names[1] };
   });
-  }
-)
+}
 
-const coloredZebraStripes = zebraStripes.map((stripe, index) => {
-  const isEven = (index % 2 === 0);
-  return Object.assign({}, stripe, {
-    color: isEven ? 'black' : 'white'
-  })
-})
+function attributesToPhrase(drivers) {
+  return drivers.map(function(driver) {
+    return `${driver.name} is from ${driver.hometown}`;
+  });
+}
